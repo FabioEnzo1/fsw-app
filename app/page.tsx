@@ -1,7 +1,9 @@
-export default function Page() {
+import { Button } from "./components/ui/button";
+
+const Home = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello, Tailwind!
-    </h1>
+    <Button>test</Button>
   );
-}
+};
+
+export default Home;
