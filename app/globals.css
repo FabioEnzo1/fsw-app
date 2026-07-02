@@ -1,38 +1,54 @@
-@import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
-@tailwind utilities;
+@import "tailwindcss";
 
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
 
 @layer base {
+
   .dark {
     --background: 225 9% 9%;
     --foreground: 210 40% 98%;
-
     --card: 228 9% 11%;
     --card-foreground: 210 40% 98%;
-
     --popover: 228 9% 11%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 252 100% 69%;
     --primary-foreground: 0 0% 100%;
-
     --secondary: 228 6% 16%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 228 6% 16%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 228 6% 16%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 228 6% 16%;
     --input: 228 6% 16%;
     --ring: 212.7 26.8% 83.9%;
-
     --radius: 0.5rem;
   }
 
@@ -40,14 +56,15 @@
     border-color: hsl(var(--border));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
   }
 
-  html {
+  html,
+  body {
     height: 100%;
   }
 
   body {
-    height: 100%;
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
