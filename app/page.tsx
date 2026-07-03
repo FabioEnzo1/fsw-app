@@ -1,13 +1,17 @@
+export const dynamic = "force-dynamic"
 import { SearchIcon } from "lucide-react"
 import { Button } from "./_components/ui/button"
-import Header from "./_components/ui/header"
+import Header from "./_components/header"
 import { Input } from "./_components/ui/input"
 import Image from "next/image"
 import { Card, CardContent } from "./_components/ui/card"
-import { Badge } from "./_components/badge"
+import { Badge } from "./_components/ui/badge"
 import { Avatar, AvatarImage } from "./_components/ui/avatar"
+import { db } from "./_lib/prisma"
+import BarbershopItem from "./_components/barbershop-item"
 
-const Home = () => {
+const Home = async () => {
+  const barbershops = await db.barbershop.findMany({})
   return (
     <div>
       {/* Header */}
@@ -52,13 +56,22 @@ const Home = () => {
             </div>
 
             {/* DIREITA */}
-            <div className="flex flex-col items-center justify-center border-l-2 border-solid px-5">
+            <div className="flex flex-col items-center justify-center border-l-2 border-solid px-5 pr-1">
               <p className="text-sm">Julho</p>
               <p className="text-2xl">02</p>
               <p className="text-sm">16:30</p>
             </div>
           </CardContent>
         </Card>
+
+        <h2 className="mt-6 mb-3 text-xs font-bold text-gray-400 uppercase">
+          Recomendados
+        </h2>
+        <div className="[&:: -webkit-scrollbar]:hidden flex gap-4 overflow-auto">
+          {barbershops.map((barbershop) => (
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+          ))}
+        </div>
       </div>
     </div>
   )
