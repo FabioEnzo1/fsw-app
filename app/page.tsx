@@ -25,10 +25,46 @@ const Home = async () => {
         <h2 className="text-xl font-bold">Olá, Enzo!</h2>
         <p>Segunda-Feira, 29 de Junho</p>
 
+        {/* BUSCA */}
+
         <div className="mt-6 flex items-center gap-2">
           <Input placeholder="Faça sua busca..." />
           <Button size="icon">
             <SearchIcon />
+          </Button>
+        </div>
+
+        {/* BUSCA RÁPIDA */}
+
+        <div className="[&:: -webkit-scrollbar]:hidden mt-6 flex gap-3 overflow-x-scroll">
+          <Button className="gap-2" variant="secondary">
+            <Image src="/cabelo.svg" width={16} height={16} alt="cabelo" />
+            Cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image src="/barba.svg" width={16} height={16} alt="cabelo" />
+            Barba
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image src="/acabamento.svg" width={16} height={16} alt="cabelo" />
+            Acabamento
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image src="/sobrancelha.svg" width={16} height={16} alt="cabelo" />
+            Sobrancelha
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image src="/hidratação.svg" width={16} height={16} alt="cabelo" />
+            Hidratação
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image src="/massagem.svg" width={16} height={16} alt="cabelo" />
+            Massagem
           </Button>
         </div>
 
@@ -90,8 +126,8 @@ const Home = async () => {
 
       <footer>
         <Card>
-          <CardContent className="px-5 py-6">
-            <p className="text-sm text-gray-400">
+          <CardContent className="px-1.5 py-2.5">
+            <p className="pl-3.5 text-sm text-gray-400">
               © 2023 Copyright <span className="font-bold">FSW Barber</span>
             </p>
           </CardContent>
