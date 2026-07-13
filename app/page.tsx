@@ -1,14 +1,14 @@
 export const dynamic = "force-dynamic"
 import { SearchIcon } from "lucide-react"
-import { Button } from "./_components/ui/button"
-import Header from "./_components/header"
-import { Input } from "./_components/ui/input"
 import Image from "next/image"
-import { Card, CardContent } from "./_components/ui/card"
-import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
-import { quickSearchOptions } from "./_constrants/search"
 import BookingItem from "./_components/booking-item"
+import Header from "./_components/header"
+import { Button } from "./_components/ui/button"
+import { Card, CardContent } from "./_components/ui/card"
+import { Input } from "./_components/ui/input"
+import { quickSearchOptions } from "./_constrants/search"
+import { db } from "./_lib/prisma"
 
 const Home = async () => {
   const barbershops = await db.barbershop.findMany({})
@@ -85,7 +85,7 @@ const Home = async () => {
         <Card>
           <CardContent className="px-1.5 py-2.5">
             <p className="pl-3.5 text-sm text-gray-400">
-              © 2023 Copyright <span className="font-bold">FSW Barber</span>
+              © 2026 Copyright <span className="font-bold">FSW Barber</span>
             </p>
           </CardContent>
         </Card>
