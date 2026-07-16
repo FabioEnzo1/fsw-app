@@ -1,7 +1,7 @@
+import { PrismaPg } from "@prisma/adapter-pg"
 import { config } from "dotenv"
 import path from "path"
 import { PrismaClient } from "../../prisma/generated/prisma/client"
-import { PrismaPg } from "@prisma/adapter-pg"
 
 config({ path: path.resolve(process.cwd(), "prisma/.env") })
 
@@ -15,7 +15,7 @@ declare global {
 }
 
 const prismaClientOptions = {
-  adapter: new PrismaPg(databaseUrl),
+  adapter: new PrismaPg({ connectionString: databaseUrl }),
 }
 
 let prisma: PrismaClient
