@@ -28,7 +28,6 @@
 }
 
 @layer base {
-
   .dark {
     --background: 225 9% 9%;
     --foreground: 210 40% 98%;

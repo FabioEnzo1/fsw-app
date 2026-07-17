@@ -12,7 +12,7 @@ const BookingItem = () => {
       <Card>
         <CardContent className="flex justify-between pl-0">
           {/* ESQUERDA */}
-          <div className="flex flex-col gap-2 py-5 pl-5">
+          <div className="flex flex-col gap-2 pt-5 pb-3 pl-5">
             <Badge className="w-fit">Confirmado</Badge>
             <h3 className="font-semibold">Corte de Cabelo</h3>
 
