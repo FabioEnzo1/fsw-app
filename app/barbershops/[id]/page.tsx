@@ -39,15 +39,14 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
         />
 
         <Button
-          size="icon"
           variant="secondary"
-          className="absolute top-4 left-4"
-          asChild
-        >
-          <Link href="/">
-            <ChevronLeftIcon />
-          </Link>
-        </Button>
+          size="icon"
+          render={
+            <Link href="/">
+              <ChevronLeftIcon />
+            </Link>
+          }
+        />
 
         <Button
           size="icon"
