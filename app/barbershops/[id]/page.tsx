@@ -1,7 +1,10 @@
 import PhoneItem from "@/app/_components/phone-item"
 import ServiceItem from "@/app/_components/service-item"
-import { Button } from "@/app/_components/ui/button"
+import SidebarSheet from "@/app/_components/sidebar-button"
+import { Button, buttonVariants } from "@/app/_components/ui/button"
+import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet"
 import { db } from "@/app/_lib/prisma"
+import { cn } from "@/app/_lib/utils"
 import { ChevronLeftIcon, MapIcon, MenuIcon, StarIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -38,23 +41,32 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
           alt={barbershop?.name}
         />
 
-        <Button
-          variant="secondary"
-          size="icon"
-          render={
-            <Link href="/">
-              <ChevronLeftIcon />
-            </Link>
-          }
-        />
-
-        <Button
-          size="icon"
-          variant="secondary"
-          className="absolute top-4 right-4"
+        <Link
+          href="/"
+          aria-label="Voltar"
+          className={cn(
+            buttonVariants({ variant: "secondary", size: "icon" }),
+            "absolute top-4 left-4",
+          )}
         >
-          <MenuIcon />
-        </Button>
+          <ChevronLeftIcon />
+        </Link>
+
+        <Sheet>
+          <SheetTrigger
+            render={
+              <Button
+                className="absolute top-4 right-4"
+                variant="secondary"
+                size="icon"
+                nativeButton={true}
+              >
+                <MenuIcon />
+              </Button>
+            }
+          ></SheetTrigger>
+          <SidebarSheet />
+        </Sheet>
       </div>
 
       <div className="border-b border-solid p-5">
@@ -88,8 +100,8 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
       </div>
       {/* CONTATOS */}
       <div className="space-y-3 p-5">
-        {barbershop.phones.map((phone) => (
-          <PhoneItem key={phone} phone={phone} />
+        {barbershop.phones.map((phone, index) => (
+          <PhoneItem key={`${phone}-${index}`} phone={phone} />
         ))}
       </div>
     </div>
