@@ -139,8 +139,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
 
       await createBooking({
         serviceId: service.id,
-        userId,
-        date: newDate,
+        dateTime: newDate,
         barbershopId: barbershop.id,
       })
 
