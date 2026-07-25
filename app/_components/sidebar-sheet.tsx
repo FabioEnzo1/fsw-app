@@ -66,10 +66,17 @@ const SidebarSheet = () => {
             ></Button>
           }
         />
-        <Button className="justify-start gap-2" variant="ghost">
-          <Calendar1Icon size={18} />
-          Agendamentos
-        </Button>
+        <Button
+          className="justify-start gap-2"
+          variant="ghost"
+          nativeButton={false}
+          render={
+            <Link href="/bookings">
+              <Calendar1Icon size={18} />
+              Agendamentos
+            </Link>
+          }
+        ></Button>
       </div>
 
       <div className="flex flex-col gap-3 border-b border-solid p-4">

@@ -73,7 +73,7 @@ const getTimeList = (bookings: Booking[]) => {
     return true
   })
 }
-
+// TODO : NÃO EXIBIR HORÁRIOS QUE JÁ PASSARAM
 const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
   const [signInDialogIsOpen, setSignInDialogIsOpen] = useState(false)
   const { data } = useSession()
