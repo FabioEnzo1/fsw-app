@@ -1,6 +1,6 @@
 "use client"
 
-import { PhoneIcon } from "lucide-react"
+import { SmartphoneIcon } from "lucide-react"
 import { toast } from "sonner"
 import { Button } from "./ui/button"
 
@@ -15,10 +15,10 @@ const PhoneItem = ({ phone }: PhoneItemProps) => {
   }
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between" key={phone}>
       {/* ESQUERDA */}
       <div className="flex items-center gap-2">
-        <PhoneIcon />
+        <SmartphoneIcon />
         <p className="text-sm">{phone}</p>
       </div>
       {/* DIREITA */}
