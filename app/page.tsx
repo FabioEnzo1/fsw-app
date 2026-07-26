@@ -1,4 +1,6 @@
 export const dynamic = "force-dynamic"
+import { format } from "date-fns"
+import { ptBR } from "date-fns/locale"
 import { getServerSession } from "next-auth"
 import Image from "next/image"
 import BarbershopItem from "./_components/barbershop-item"
@@ -45,8 +47,10 @@ const Home = async () => {
       {/* Header */}
       <Header />
       <div className="p-5">
-        <h2 className="text-xl font-bold">Olá, Enzo!</h2>
-        <p>Segunda-Feira, 29 de Junho</p>
+        <h2 className="text-xl font-bold">
+          Olá, {user?.user ? user.user.name : "bem vindo"}!
+        </h2>
+        <p>{format(new Date(), "EEEE, dd 'de' MMMM", { locale: ptBR })}</p>
 
         {/* BUSCA */}
 
