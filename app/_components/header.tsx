@@ -10,24 +10,38 @@ import { Sheet, SheetTrigger } from "./ui/sheet"
 
 const Header = () => {
   return (
-    <div>
-      <CardHeader className="flex flex-row items-center justify-between p-5">
+    <header className="border-b">
+      <CardHeader className="mx-auto flex w-full max-w-7xl flex-row items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/">
           <Image src="/Logo.png" alt="FSW BARBER" height={18} width={120} />
         </Link>
 
-        <Sheet>
-          <SheetTrigger
-            render={
-              <Button variant="outline" size="icon" nativeButton={true}>
-                <MenuIcon />
-              </Button>
-            }
-          />
-          <SidebarSheet />
-        </Sheet>
+        <div className="flex items-center gap-2 sm:gap-4">
+          <nav className="hidden items-center gap-4 text-sm text-gray-400 md:flex">
+            <Link className="hover:text-foreground transition-colors" href="/">
+              Início
+            </Link>
+            <Link
+              className="hover:text-foreground transition-colors"
+              href="/bookings"
+            >
+              Agendamentos
+            </Link>
+          </nav>
+
+          <Sheet>
+            <SheetTrigger
+              render={
+                <Button variant="outline" size="icon" nativeButton={true}>
+                  <MenuIcon />
+                </Button>
+              }
+            />
+            <SidebarSheet />
+          </Sheet>
+        </div>
       </CardHeader>
-    </div>
+    </header>
   )
 }
 
