@@ -7,7 +7,6 @@ import Image from "next/image"
 import { useState } from "react"
 import { toast } from "sonner"
 import { deleteBooking } from "../_actions/delete-booking"
-import BookingSummary from "./booking-summary"
 import PhoneItem from "./phone-item"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import { Badge } from "./ui/badge"
@@ -69,27 +68,25 @@ const BookingItem = ({ booking }: BookingItemProps) => {
 
   return (
     <Sheet open={isSheetOpen} onOpenChange={handleSheetOpenChange}>
-      <SheetTrigger className="w-full min-w-0 text-left">
-        <Card className="w-full min-w-0">
+      <SheetTrigger className="w-full min-w-[90%]">
+        <Card className="min-w-[90%]">
           <CardContent className="flex min-h-35 p-0">
             {/* ESQUERDA */}
-            <div className="flex min-w-0 flex-1 flex-col justify-center gap-2 px-4 py-4 sm:px-5">
+            <div className="flex flex-1 flex-col justify-center gap-2 px-5 py-4">
               <Badge
                 className="w-fit"
                 variant={isConfirmed ? "default" : "secondary"}
               >
                 {isConfirmed ? "Confirmado" : "Finalizado"}
               </Badge>
-              <h3 className="font-semibold break-words">
-                {booking.service.name}
-              </h3>
+              <h3 className="font-semibold">{booking.service.name}</h3>
 
               <div className="flex items-center gap-2">
                 <Avatar className="h-6 w-6">
                   <AvatarImage src={booking.service.barbershop.imageUrl} />
                 </Avatar>
 
-                <p className="truncate text-sm text-gray-400">
+                <p className="text-sm text-gray-400">
                   {booking.service.barbershop.name}
                 </p>
               </div>
@@ -110,7 +107,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
           </CardContent>
         </Card>
       </SheetTrigger>
-      <SheetContent className="w-[min(90vw,32rem)] px-4 sm:px-5">
+      <SheetContent className="w-[90%] px-5">
         <SheetHeader>
           <SheetTitle className="text-left">Informações da Reserva</SheetTitle>
         </SheetHeader>
@@ -129,9 +126,9 @@ const BookingItem = ({ booking }: BookingItemProps) => {
                 <AvatarImage src={barbershop.imageUrl} />
               </Avatar>
 
-              <div className="min-w-0">
+              <div>
                 <h3 className="font-bold">{barbershop.name}</h3>
-                <p className="text-xs break-words">{barbershop.address}</p>
+                <p className="text-xs">{barbershop.address}</p>
               </div>
             </CardContent>
           </Card>
@@ -145,13 +142,40 @@ const BookingItem = ({ booking }: BookingItemProps) => {
             {isConfirmed ? "Confirmado" : "Finalizado"}
           </Badge>
 
-          <div className="mt-3">
-            <BookingSummary
-              barbershop={barbershop}
-              service={booking.service}
-              selectedDate={booking.dateTime}
-            />
-          </div>
+          <Card className="mt-3">
+            <CardContent className="space-y-3 p-3">
+              <div className="flex items-center justify-between">
+                <h2 className="font-bold">{booking.service.name}</h2>
+                <p className="text-primary text-sm">
+                  {Intl.NumberFormat("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  }).format(Number(booking.service.price))}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <h2 className="text-sm text-gray-400">Data</h2>
+                <p className="text-sm">
+                  {format(booking.dateTime, "d 'de' MMMM", {
+                    locale: ptBR,
+                  })}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <h2 className="text-sm text-gray-400">Horário</h2>
+                <p className="text-sm">
+                  {format(booking.dateTime, "HH:mm", { locale: ptBR })}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <h2 className="text-sm text-gray-400">Barbearia</h2>
+                <p className="text-sm">{barbershop.name}</p>
+              </div>
+            </CardContent>
+          </Card>
 
           <div className="mt-3 space-y-3">
             {barbershop.phones.map((phone, index) => (
@@ -159,7 +183,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
             ))}
           </div>
         </div>
-        <SheetFooter className="mt-5 flex w-full flex-row flex-wrap gap-3 p-0">
+        <SheetFooter className="mt-5 flex w-full flex-row gap-3 p-0">
           <SheetClose
             render={
               <Button variant="outline" className="flex-1">

@@ -46,7 +46,7 @@ const Home = async () => {
     <div>
       {/* Header */}
       <Header />
-      <main className="mx-auto w-full max-w-7xl px-4 py-5 sm:px-6 sm:py-8 lg:px-8">
+      <div className="p-5">
         <h2 className="text-xl font-bold">
           Olá, {user?.user ? user.user.name : "bem vindo"}!
         </h2>
@@ -60,7 +60,7 @@ const Home = async () => {
 
         {/* BUSCA RÁPIDA */}
 
-        <div className="mt-6 flex gap-3 overflow-x-auto pb-1 md:flex-wrap md:overflow-visible [&::-webkit-scrollbar]:hidden">
+        <div className="[&:: -webkit-scrollbar]:hidden mt-6 flex gap-3 overflow-x-scroll">
           {quickSearchOptions.map((option) => (
             <Button className="gap-2" variant="secondary" key={option.title}>
               <Image
@@ -74,7 +74,7 @@ const Home = async () => {
           ))}
         </div>
 
-        <div className="relative mt-6 h-40 w-full sm:h-52 lg:h-64">
+        <div className="relative mt-6 h-37.5 w-full">
           <Image
             alt="Agende nos melhores com FSW BARBER"
             src="/banner01.png"
@@ -90,14 +90,12 @@ const Home = async () => {
             </h2>
 
             {/* AGENDAMENTO */}
-            <div className="flex gap-3 overflow-x-auto pb-1 md:grid md:grid-cols-2 md:overflow-visible [&::-webkit-scrollbar]:hidden">
+            <div className="flex gap-3 overflow-x-auto">
               {confirmedBookings.map((booking) => (
-                <div
-                  className="w-[min(20rem,calc(100vw-2rem))] shrink-0 md:w-auto"
+                <BookingItem
                   key={booking.id}
-                >
-                  <BookingItem booking={JSON.parse(JSON.stringify(booking))} />
-                </div>
+                  booking={JSON.parse(JSON.stringify(booking))}
+                />
               ))}
             </div>
           </>
@@ -106,25 +104,21 @@ const Home = async () => {
         <h2 className="mt-6 mb-3 text-xs font-bold text-gray-400 uppercase">
           Recomendados
         </h2>
-        <div className="flex gap-4 overflow-x-auto pb-1 md:grid md:grid-cols-3 md:overflow-visible xl:grid-cols-4 [&::-webkit-scrollbar]:hidden">
+        <div className="[&:: -webkit-scrollbar]:hidden flex gap-4 overflow-auto">
           {barbershops.map((barbershop) => (
-            <div className="w-40 shrink-0 md:w-auto" key={barbershop.id}>
-              <BarbershopItem barbershop={barbershop} />
-            </div>
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
 
         <h2 className="mt-6 mb-3 text-xs font-bold text-gray-400 uppercase">
           Populares
         </h2>
-        <div className="flex gap-4 overflow-x-auto pb-1 md:grid md:grid-cols-3 md:overflow-visible xl:grid-cols-4 [&::-webkit-scrollbar]:hidden">
+        <div className="[&:: -webkit-scrollbar]:hidden flex gap-4 overflow-auto">
           {popularBarbershops.map((barbershop) => (
-            <div className="w-40 shrink-0 md:w-auto" key={barbershop.id}>
-              <BarbershopItem barbershop={barbershop} />
-            </div>
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
-      </main>
+      </div>
     </div>
   )
 }

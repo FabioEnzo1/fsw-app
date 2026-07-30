@@ -12,10 +12,10 @@ interface BarbershopItemProps {
 
 const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
   return (
-    <Card className="h-full min-w-0 rounded-2xl pt-0 pb-0">
+    <Card className="min-w-39.75 rounded-2xl pt-0 pb-0">
       <CardContent className="p-0 px-1 pt-1">
         {/* IMAGEM */}
-        <div className="relative aspect-square w-full">
+        <div className="relative h-39.75 w-full">
           <Image
             alt={barbershop.name}
             fill
