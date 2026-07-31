@@ -21,10 +21,14 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --spacing: clamp(0.22rem, 0.2rem + 0.2vw, 0.3rem);
+
+  --text-sm: clamp(0.8rem, 0.75rem + 0.2vw, 0.875rem);
+  --text-base: clamp(0.95rem, 0.9rem + 0.25vw, 1rem);
+  --text-lg: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+  --text-xl: clamp(1.2rem, 1rem + 1vw, 1.5rem);
+  --text-2xl: clamp(1.4rem, 1.1rem + 1.5vw, 2rem);
+  --text-3xl: clamp(1.7rem, 1.2rem + 2.5vw, 3rem);
 }
 
 @layer base {
